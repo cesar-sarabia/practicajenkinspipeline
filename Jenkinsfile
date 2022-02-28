@@ -6,14 +6,14 @@ pipeline {
   }
 
   environment {
-    ARTIFACT_ID = "folder/webapp:${env.BUILD_NUMBER}"
+    ARTIFACT_ID = "webapp:${env.BUILD_NUMBER}"
   }
 
   stages {
     stage('Build') {
       steps {
         script {
-          dir("") {
+          dir("webapp") {
             dockerImage = docker.build "${env.ARTIFACT_ID}"
           }
         }
